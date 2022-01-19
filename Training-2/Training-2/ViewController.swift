@@ -15,17 +15,22 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        weatherImage.image = setWeatherImage(weather: "sunny")
     }
 
     @IBAction func touchUpInsideReloadButton(_ sender: Any) {
         let weather: String = YumemiWeather.fetchWeather()
         
+        weatherImage.image = setWeatherImage(weather: weather)
+    }
+    
+    func setWeatherImage(weather: String) -> UIImage {
         var image = UIImage(named: weather)
         
         let color = setWeatherColor(weather: weather)
         image = setTintColor(image: image!, color: color)
         
-        weatherImage.image = image
+        return image!
     }
     
     func setWeatherColor(weather: String) -> UIColor {
