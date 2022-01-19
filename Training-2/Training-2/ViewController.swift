@@ -25,15 +25,16 @@ class ViewController: UIViewController {
             weatherImage.image = setWeatherImage(weather: weather)
         } catch YumemiWeatherError.unknownError {
             print("err")
-            showAlert()
+            showAlert(errMessage: "エラー")
         } catch {
             print("unknown")
+            showAlert(errMessage: "不明なエラー")
         }
         //let weather: String = YumemiWeather.fetchWeather()
     }
     
-    func showAlert() {
-        let alert = UIAlertController(title: "エラー", message: "もう一度試してください", preferredStyle: .alert)
+    func showAlert(errMessage: String) {
+        let alert = UIAlertController(title: errMessage, message: "もう一度試してください", preferredStyle: .alert)
         
         let yesAction = UIAlertAction(title: "了解", style: .default) { action in
             print("yes")
