@@ -19,9 +19,31 @@ class ViewController: UIViewController {
     }
 
     @IBAction func touchUpInsideReloadButton(_ sender: Any) {
-        let weather: String = YumemiWeather.fetchWeather()
+        var weather: String = ""
+        do {
+            try weather = YumemiWeather.fetchWeather(at: "tokyo")
+            weatherImage.image = setWeatherImage(weather: weather)
+        } catch YumemiWeatherError.unknownError {
+            print("err")
+            showAlert()
+        } catch {
+            print("unknown")
+        }
+        //let weather: String = YumemiWeather.fetchWeather()
+    }
+    
+    func showAlert() {
+        let alert = UIAlertController(title: "エラー", message: "もう一度試してください", preferredStyle: .alert)
         
-        weatherImage.image = setWeatherImage(weather: weather)
+        let yesAction = UIAlertAction(title: "了解", style: .default) { action in
+            print("yes")
+        }
+
+        // アクションの追加
+        alert.addAction(yesAction)
+
+        // UIAlertControllerの表示
+        present(alert, animated: true, completion: nil)
     }
     
     func setWeatherImage(weather: String) -> UIImage {
