@@ -12,18 +12,30 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var reloadButton: UIButton!
     @IBOutlet weak var weatherImage: UIImageView!
+    private var requestJsonData: String!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         weatherImage.image = setWeatherImage(weather: "sunny")
+        
+        // リクエストデータをセットしJSONにエンコードする
+        let requestData = RequestUserData(area: "tokyo", date: "2020-04-01T12:00:00+09:00")
+        let requestJson = encodeRequestData(requestData: requestData)
+        if let requestJson = requestJson {
+            requestJsonData = requestJson
+        } else {
+            requestJsonData = ""
+        }
     }
 
     @IBAction func touchUpInsideReloadButton(_ sender: Any) {
         var weather: String = ""
         do {
-            try weather = YumemiWeather.fetchWeather(at: "tokyo")
-            weatherImage.image = setWeatherImage(weather: weather)
-        } catch YumemiWeatherError.unknownError {
+            try weather = YumemiWeather.fetchWeather(self.requestJsonData)
+            let weatherData = decodeResponseData(reaponseJson: weather)
+            
+            weatherImage.image = setWeatherImage(weather: weatherData.weather)
+        } catch YumemiWeatherError.invalidParameterError {
             print("err")
             showAlert(errMessage: "エラー")
         } catch {
@@ -31,6 +43,45 @@ class ViewController: UIViewController {
             showAlert(errMessage: "不明なエラー")
         }
         //let weather: String = YumemiWeather.fetchWeather()
+    }
+    
+    // 地域と時刻をもつ構造体オブジェクトをJson文字列にエンコード
+    func encodeRequestData(requestData: RequestUserData) -> String? {
+        var jsonString: String?
+        do {
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = [.prettyPrinted, .withoutEscapingSlashes]
+            let jsonData = try encoder.encode(requestData)
+            jsonString = String(data: jsonData, encoding: .utf8)
+            print(jsonString)
+        } catch {
+            print("エンコードエラー")
+        }
+        
+        if let jsonString = jsonString {
+            return jsonString
+        } else {
+            return nil
+        }
+    }
+    
+    // 天気予報APIのレスポンスJsonを構造体型にデコード
+    func decodeResponseData(reaponseJson: String) -> ResponseWeatherData {
+        var response: ResponseWeatherData?
+        do {
+            let jsonData = reaponseJson.data(using: .utf8)!
+            let decoder = JSONDecoder()
+            response = try decoder.decode(ResponseWeatherData.self, from: jsonData)
+            print(response)
+        } catch {
+            print("デコードエラー")
+        }
+        
+        if let response = response {
+            return response
+        } else {
+            return nil
+        }
     }
     
     func showAlert(errMessage: String) {
