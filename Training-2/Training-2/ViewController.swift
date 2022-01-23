@@ -12,6 +12,8 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var reloadButton: UIButton!
     @IBOutlet weak var weatherImage: UIImageView!
+    @IBOutlet weak var minTempLbl: UILabel!
+    @IBOutlet weak var maxTempLbl: UILabel!
     private var requestJsonData: String!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,14 +35,24 @@ class ViewController: UIViewController {
         do {
             try weather = YumemiWeather.fetchWeather(self.requestJsonData)
             let weatherData = decodeResponseData(reaponseJson: weather)
+            var currentWeatherData: ResponseWeatherData!
             
-            weatherImage.image = setWeatherImage(weather: weatherData.weather)
+            if let weatherData = weatherData {
+                currentWeatherData = weatherData
+            }
+            
+            weatherImage.image = setWeatherImage(weather: currentWeatherData.weather)
+            minTempLbl.text = String(currentWeatherData.min_temp)
+            maxTempLbl.text = String(currentWeatherData.max_temp)
         } catch YumemiWeatherError.invalidParameterError {
             print("err")
             showAlert(errMessage: "エラー")
-        } catch {
+        } catch YumemiWeatherError.unknownError {
             print("unknown")
             showAlert(errMessage: "不明なエラー")
+        } catch {
+            print("EMERGENCE")
+            showAlert(errMessage: "なんだこれあ")
         }
         //let weather: String = YumemiWeather.fetchWeather()
     }
@@ -66,7 +78,7 @@ class ViewController: UIViewController {
     }
     
     // 天気予報APIのレスポンスJsonを構造体型にデコード
-    func decodeResponseData(reaponseJson: String) -> ResponseWeatherData {
+    func decodeResponseData(reaponseJson: String) -> ResponseWeatherData? {
         var response: ResponseWeatherData?
         do {
             let jsonData = reaponseJson.data(using: .utf8)!
@@ -74,7 +86,8 @@ class ViewController: UIViewController {
             response = try decoder.decode(ResponseWeatherData.self, from: jsonData)
             print(response)
         } catch {
-            print("デコードエラー")
+            print(error)
+            print(error.localizedDescription)
         }
         
         if let response = response {

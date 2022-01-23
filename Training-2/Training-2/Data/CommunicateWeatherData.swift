@@ -14,7 +14,7 @@ struct RequestUserData: Codable {
 
 struct ResponseWeatherData: Codable {
     var weather: String
-    var maxTemp: Int
-    var minTemp: Int
+    var max_temp: Int
+    var min_temp: Int
     var date: String
 }
