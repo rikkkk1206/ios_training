@@ -17,6 +17,7 @@
 		32393F8D279456EC003FE3F8 /* Training_2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32393F8C279456EC003FE3F8 /* Training_2Tests.swift */; };
 		32393F97279456EC003FE3F8 /* Training_2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32393F96279456EC003FE3F8 /* Training_2UITests.swift */; };
 		32393F99279456EC003FE3F8 /* Training_2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32393F98279456EC003FE3F8 /* Training_2UITestsLaunchTests.swift */; };
+		32CE76B6279D627200DA5CE0 /* CommunicateWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CE76B5279D627200DA5CE0 /* CommunicateWeatherData.swift */; };
 		32F0846827963F3C00306968 /* YumemiWeather in Frameworks */ = {isa = PBXBuildFile; productRef = 32F0846727963F3C00306968 /* YumemiWeather */; };
 		33F1B5067E662FA1DD023927 /* Pods_Training_2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E206F78DBBC258A1CB36A902 /* Pods_Training_2.framework */; };
 		B2185AAFD69DB6434A171C42 /* Pods_Training_2_Training_2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D950887EB5C9593F33A984 /* Pods_Training_2_Training_2UITests.framework */; };
@@ -55,6 +56,7 @@
 		32393F92279456EC003FE3F8 /* Training-2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Training-2UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32393F96279456EC003FE3F8 /* Training_2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training_2UITests.swift; sourceTree = "<group>"; };
 		32393F98279456EC003FE3F8 /* Training_2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training_2UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		32CE76B5279D627200DA5CE0 /* CommunicateWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicateWeatherData.swift; sourceTree = "<group>"; };
 		562FC622974255B1F3A0FC92 /* Pods-Training-2-Training-2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Training-2-Training-2UITests.debug.xcconfig"; path = "Target Support Files/Pods-Training-2-Training-2UITests/Pods-Training-2-Training-2UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8BD9315B7ED75CFDC630D65C /* Pods-Training-2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Training-2Tests.release.xcconfig"; path = "Target Support Files/Pods-Training-2Tests/Pods-Training-2Tests.release.xcconfig"; sourceTree = "<group>"; };
 		B46F02508AEBD8B651131244 /* Pods-Training-2-Training-2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Training-2-Training-2UITests.release.xcconfig"; path = "Target Support Files/Pods-Training-2-Training-2UITests/Pods-Training-2-Training-2UITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 		32393F74279456EC003FE3F8 /* Training-2 */ = {
 			isa = PBXGroup;
 			children = (
+				32CE76B4279D61F900DA5CE0 /* Data */,
 				32393F75279456EC003FE3F8 /* AppDelegate.swift */,
 				32393F77279456EC003FE3F8 /* SceneDelegate.swift */,
 				32393F79279456EC003FE3F8 /* ViewController.swift */,
@@ -144,6 +147,14 @@
 				32393F98279456EC003FE3F8 /* Training_2UITestsLaunchTests.swift */,
 			);
 			path = "Training-2UITests";
+			sourceTree = "<group>";
+		};
+		32CE76B4279D61F900DA5CE0 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				32CE76B5279D627200DA5CE0 /* CommunicateWeatherData.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		C9D3A5B87B122C5950197A30 /* Frameworks */ = {
@@ -380,6 +391,7 @@
 			files = (
 				32393F7A279456EC003FE3F8 /* ViewController.swift in Sources */,
 				32393F76279456EC003FE3F8 /* AppDelegate.swift in Sources */,
+				32CE76B6279D627200DA5CE0 /* CommunicateWeatherData.swift in Sources */,
 				32393F78279456EC003FE3F8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

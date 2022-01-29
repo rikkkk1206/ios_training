@@ -85,6 +85,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="maxTempLbl" destination="2p1-YX-Yei" id="9fA-3N-lUI"/>
+                        <outlet property="minTempLbl" destination="qbY-Cs-Dgl" id="pKd-DB-2Md"/>
                         <outlet property="reloadButton" destination="hn1-Vr-xhG" id="xEd-8F-MoY"/>
                         <outlet property="weatherImage" destination="bWi-cl-2yQ" id="jO6-gE-0hs"/>
                     </connections>
