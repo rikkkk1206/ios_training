@@ -21,6 +21,11 @@ class EntryViewController: UIViewController {
         self.performSegue(withIdentifier: "toMainView", sender: self)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.performSegue(withIdentifier: "toMainView", sender: self)
+    }
 
     /*
     // MARK: - Navigation

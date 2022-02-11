@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2F170849F6B4B24C55146B82 /* Pods_Training_2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2AF005696CE8949BF38D751 /* Pods_Training_2Tests.framework */; };
 		320676DD27AFD6CC00543CAC /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320676DC27AFD6CC00543CAC /* EntryViewController.swift */; };
+		320676DF27B69EB200543CAC /* DismissSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320676DE27B69EB200543CAC /* DismissSegue.swift */; };
 		32393F76279456EC003FE3F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32393F75279456EC003FE3F8 /* AppDelegate.swift */; };
 		32393F78279456EC003FE3F8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32393F77279456EC003FE3F8 /* SceneDelegate.swift */; };
 		32393F7A279456EC003FE3F8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32393F79279456EC003FE3F8 /* ViewController.swift */; };
@@ -45,6 +46,7 @@
 		14D950887EB5C9593F33A984 /* Pods_Training_2_Training_2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Training_2_Training_2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A48EC55AC37BE65094E2CE4 /* Pods-Training-2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Training-2Tests.debug.xcconfig"; path = "Target Support Files/Pods-Training-2Tests/Pods-Training-2Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		320676DC27AFD6CC00543CAC /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
+		320676DE27B69EB200543CAC /* DismissSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissSegue.swift; sourceTree = "<group>"; };
 		32393F72279456EC003FE3F8 /* Training-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Training-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32393F75279456EC003FE3F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32393F77279456EC003FE3F8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				32393F77279456EC003FE3F8 /* SceneDelegate.swift */,
 				32393F79279456EC003FE3F8 /* ViewController.swift */,
 				32393F7B279456EC003FE3F8 /* Main.storyboard */,
+				320676DE27B69EB200543CAC /* DismissSegue.swift */,
 				320676DC27AFD6CC00543CAC /* EntryViewController.swift */,
 				32393F7E279456EC003FE3F8 /* Assets.xcassets */,
 				32393F80279456EC003FE3F8 /* LaunchScreen.storyboard */,
@@ -396,6 +399,7 @@
 				320676DD27AFD6CC00543CAC /* EntryViewController.swift in Sources */,
 				32393F76279456EC003FE3F8 /* AppDelegate.swift in Sources */,
 				32CE76B6279D627200DA5CE0 /* CommunicateWeatherData.swift in Sources */,
+				320676DF27B69EB200543CAC /* DismissSegue.swift in Sources */,
 				32393F78279456EC003FE3F8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
