@@ -16,7 +16,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var maxTempLbl: UILabel!
     private var requestJsonData: String!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
-    let weatherDelegate = weatherClass()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -43,14 +42,36 @@ class ViewController: UIViewController {
     @IBAction func touchUpInsideReloadButton(_ sender: Any) {
         var weather: String = ""
         indicator.startAnimating()
+        
         DispatchQueue.global(qos: .default).async {
-            do {
-                try weather = self.weatherDelegate.fetchWeather(self.requestJsonData)
+            var fetchedStr: ((String) -> String)
+            fetchedStr = { (jsonString: String) -> String in
+                var str: String = ""
+                do {
+                    str = try YumemiWeather.syncFetchWeather(jsonString)
+                } catch YumemiWeatherError.invalidParameterError {
+                    str = "err"
+                } catch YumemiWeatherError.unknownError {
+                    str = "unknown"
+                } catch {
+                    str = "EMERGENCE"
+                }
+                return str
+            }
+            weather = fetchedStr(self.requestJsonData)
+            
+            DispatchQueue.main.async {
+                self.indicator.stopAnimating()
                 
-                DispatchQueue.main.async {
+                switch weather {
+                case "err":
+                    self.showAlert(errMessage: "エラー")
+                case "unknown":
+                    self.showAlert(errMessage: "不明なエラー")
+                case "EMERGENCE":
+                    self.showAlert(errMessage: "なんだこれあ")
+                default:
                     self.weatherImage.isHidden = false
-                    self.indicator.stopAnimating()
-                    
                     let weatherData = self.decodeResponseData(reaponseJson: weather)
                     var currentWeatherData: ResponseWeatherData!
                     
@@ -60,24 +81,6 @@ class ViewController: UIViewController {
                     
                     self.weatherImage.image = self.setWeatherImage(weather: currentWeatherData.weather)
                     self.setTempLbl(maxTemp: currentWeatherData.max_temp, minTemp: currentWeatherData.min_temp)
-                }
-            } catch YumemiWeatherError.invalidParameterError {
-                print("err")
-                DispatchQueue.main.async {
-                    self.indicator.stopAnimating()
-                    self.showAlert(errMessage: "エラー")
-                }
-            } catch YumemiWeatherError.unknownError {
-                print("unknown")
-                DispatchQueue.main.async {
-                    self.indicator.stopAnimating()
-                    self.showAlert(errMessage: "不明なエラー")
-                }
-            } catch {
-                print("EMERGENCE")
-                DispatchQueue.main.async {
-                    self.indicator.stopAnimating()
-                    self.showAlert(errMessage: "なんだこれあ")
                 }
             }
         }
@@ -173,13 +176,5 @@ class ViewController: UIViewController {
     func setTempLbl(maxTemp: Int, minTemp: Int) {
         self.minTempLbl.text = String(minTemp)
         self.maxTempLbl.text = String(maxTemp)
-    }
-}
-
-class weatherClass {}
-
-extension weatherClass: WeatherProtocol {
-    func fetchWeather(_ jsonString: String) throws -> String {
-        return try YumemiWeather.syncFetchWeather(jsonString)
     }
 }
