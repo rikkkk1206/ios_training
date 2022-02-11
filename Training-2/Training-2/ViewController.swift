@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        weatherImage.image = setWeatherImage(weather: "sunny")
+        weatherImage.isHidden = true
         
         // リクエストデータをセットしJSONにエンコードする
         let requestData = RequestUserData(area: "tokyo", date: "2020-04-01T12:00:00+09:00")
@@ -33,6 +33,7 @@ class ViewController: UIViewController {
     @IBAction func touchUpInsideReloadButton(_ sender: Any) {
         var weather: String = ""
         do {
+            weatherImage.isHidden = false
             try weather = YumemiWeather.fetchWeather(self.requestJsonData)
             let weatherData = decodeResponseData(reaponseJson: weather)
             var currentWeatherData: ResponseWeatherData!
