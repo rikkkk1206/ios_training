@@ -33,6 +33,11 @@ class ViewController: UIViewController {
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(touchUpInsideReloadButton(_:)), name: .notifyName, object: nil)
+        print("didload")
+    }
+    
+    deinit {
+        print("deinit")
     }
 
     @IBAction func touchUpInsideReloadButton(_ sender: Any) {
@@ -58,13 +63,22 @@ class ViewController: UIViewController {
                 }
             } catch YumemiWeatherError.invalidParameterError {
                 print("err")
-                self.showAlert(errMessage: "エラー")
+                DispatchQueue.main.async {
+                    self.indicator.stopAnimating()
+                    self.showAlert(errMessage: "エラー")
+                }
             } catch YumemiWeatherError.unknownError {
                 print("unknown")
-                self.showAlert(errMessage: "不明なエラー")
+                DispatchQueue.main.async {
+                    self.indicator.stopAnimating()
+                    self.showAlert(errMessage: "不明なエラー")
+                }
             } catch {
                 print("EMERGENCE")
-                self.showAlert(errMessage: "なんだこれあ")
+                DispatchQueue.main.async {
+                    self.indicator.stopAnimating()
+                    self.showAlert(errMessage: "なんだこれあ")
+                }
             }
         }
     }
