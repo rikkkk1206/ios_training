@@ -28,6 +28,8 @@ class ViewController: UIViewController {
         } else {
             requestJsonData = ""
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(touchUpInsideReloadButton(_:)), name: .notifyName, object: nil)
     }
 
     @IBAction func touchUpInsideReloadButton(_ sender: Any) {
