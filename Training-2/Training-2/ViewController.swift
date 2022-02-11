@@ -15,11 +15,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var minTempLbl: UILabel!
     @IBOutlet weak var maxTempLbl: UILabel!
     private var requestJsonData: String!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         weatherImage.isHidden = true
-        
+        // indicator.isHidden = true
+        indicator.hidesWhenStopped = true
         // リクエストデータをセットしJSONにエンコードする
         let requestData = RequestUserData(area: "tokyo", date: "2020-04-01T12:00:00+09:00")
         let requestJson = encodeRequestData(requestData: requestData)
@@ -34,31 +36,36 @@ class ViewController: UIViewController {
 
     @IBAction func touchUpInsideReloadButton(_ sender: Any) {
         var weather: String = ""
-        do {
-            weatherImage.isHidden = false
-            try weather = YumemiWeather.fetchWeather(self.requestJsonData)
-            let weatherData = decodeResponseData(reaponseJson: weather)
-            var currentWeatherData: ResponseWeatherData!
-            
-            if let weatherData = weatherData {
-                currentWeatherData = weatherData
+        indicator.startAnimating()
+        DispatchQueue.global(qos: .default).async {
+            do {
+                try weather = YumemiWeather.syncFetchWeather(self.requestJsonData)
+                
+                DispatchQueue.main.async {
+                    self.weatherImage.isHidden = false
+                    self.indicator.stopAnimating()
+                    
+                    let weatherData = self.decodeResponseData(reaponseJson: weather)
+                    var currentWeatherData: ResponseWeatherData!
+                    
+                    if let weatherData = weatherData {
+                        currentWeatherData = weatherData
+                    }
+                    
+                    self.weatherImage.image = self.setWeatherImage(weather: currentWeatherData.weather)
+                    self.setTempLbl(maxTemp: currentWeatherData.max_temp, minTemp: currentWeatherData.min_temp)
+                }
+            } catch YumemiWeatherError.invalidParameterError {
+                print("err")
+                self.showAlert(errMessage: "エラー")
+            } catch YumemiWeatherError.unknownError {
+                print("unknown")
+                self.showAlert(errMessage: "不明なエラー")
+            } catch {
+                print("EMERGENCE")
+                self.showAlert(errMessage: "なんだこれあ")
             }
-            
-            weatherImage.image = setWeatherImage(weather: currentWeatherData.weather)
-            setTempLbl(maxTemp: currentWeatherData.max_temp, minTemp: currentWeatherData.min_temp)
-//            minTempLbl.text = String(currentWeatherData.min_temp)
-//            maxTempLbl.text = String(currentWeatherData.max_temp)
-        } catch YumemiWeatherError.invalidParameterError {
-            print("err")
-            showAlert(errMessage: "エラー")
-        } catch YumemiWeatherError.unknownError {
-            print("unknown")
-            showAlert(errMessage: "不明なエラー")
-        } catch {
-            print("EMERGENCE")
-            showAlert(errMessage: "なんだこれあ")
         }
-        //let weather: String = YumemiWeather.fetchWeather()
     }
     
     // 地域と時刻をもつ構造体オブジェクトをJson文字列にエンコード
