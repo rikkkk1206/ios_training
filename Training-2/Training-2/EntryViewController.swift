@@ -25,6 +25,7 @@ class EntryViewController: UIViewController {
         super.viewDidAppear(animated)
         
         self.performSegue(withIdentifier: "toMainView", sender: self)
+        NotificationCenter.default.post(name: .notifyName, object: nil)
     }
 
     /*
