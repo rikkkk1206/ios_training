@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var maxTempLbl: UILabel!
     private var requestJsonData: String!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
+    let weatherDelegate = weatherClass()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -32,6 +33,11 @@ class ViewController: UIViewController {
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(touchUpInsideReloadButton(_:)), name: .notifyName, object: nil)
+        print("didload")
+    }
+    
+    deinit {
+        print("deinit")
     }
 
     @IBAction func touchUpInsideReloadButton(_ sender: Any) {
@@ -39,7 +45,7 @@ class ViewController: UIViewController {
         indicator.startAnimating()
         DispatchQueue.global(qos: .default).async {
             do {
-                try weather = YumemiWeather.syncFetchWeather(self.requestJsonData)
+                try weather = self.weatherDelegate.fetchWeather(self.requestJsonData)
                 
                 DispatchQueue.main.async {
                     self.weatherImage.isHidden = false
@@ -57,13 +63,22 @@ class ViewController: UIViewController {
                 }
             } catch YumemiWeatherError.invalidParameterError {
                 print("err")
-                self.showAlert(errMessage: "エラー")
+                DispatchQueue.main.async {
+                    self.indicator.stopAnimating()
+                    self.showAlert(errMessage: "エラー")
+                }
             } catch YumemiWeatherError.unknownError {
                 print("unknown")
-                self.showAlert(errMessage: "不明なエラー")
+                DispatchQueue.main.async {
+                    self.indicator.stopAnimating()
+                    self.showAlert(errMessage: "不明なエラー")
+                }
             } catch {
                 print("EMERGENCE")
-                self.showAlert(errMessage: "なんだこれあ")
+                DispatchQueue.main.async {
+                    self.indicator.stopAnimating()
+                    self.showAlert(errMessage: "なんだこれあ")
+                }
             }
         }
     }
@@ -161,3 +176,10 @@ class ViewController: UIViewController {
     }
 }
 
+class weatherClass {}
+
+extension weatherClass: WeatherProtocol {
+    func fetchWeather(_ jsonString: String) throws -> String {
+        return try YumemiWeather.syncFetchWeather(jsonString)
+    }
+}
