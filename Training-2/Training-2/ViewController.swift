@@ -45,8 +45,9 @@ class ViewController: UIViewController {
             }
             
             weatherImage.image = setWeatherImage(weather: currentWeatherData.weather)
-            minTempLbl.text = String(currentWeatherData.min_temp)
-            maxTempLbl.text = String(currentWeatherData.max_temp)
+            setTempLbl(maxTemp: currentWeatherData.max_temp, minTemp: currentWeatherData.min_temp)
+//            minTempLbl.text = String(currentWeatherData.min_temp)
+//            maxTempLbl.text = String(currentWeatherData.max_temp)
         } catch YumemiWeatherError.invalidParameterError {
             print("err")
             showAlert(errMessage: "エラー")
@@ -145,6 +146,11 @@ class ViewController: UIViewController {
             color.setFill()
             context.fill(rect, blendMode: .sourceIn)  // 単色の前景画像として描画
         }
+    }
+    
+    func setTempLbl(maxTemp: Int, minTemp: Int) {
+        self.minTempLbl.text = String(minTemp)
+        self.maxTempLbl.text = String(maxTemp)
     }
 }
 

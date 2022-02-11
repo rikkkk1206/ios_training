@@ -11,6 +11,10 @@
 		320676DD27AFD6CC00543CAC /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320676DC27AFD6CC00543CAC /* EntryViewController.swift */; };
 		320676DF27B69EB200543CAC /* DismissSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320676DE27B69EB200543CAC /* DismissSegue.swift */; };
 		320676E127B6CBFA00543CAC /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320676E027B6CBFA00543CAC /* extensions.swift */; };
+		320676E627B6D9A000543CAC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32393F79279456EC003FE3F8 /* ViewController.swift */; };
+		320676E727B6D9A000543CAC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32393F79279456EC003FE3F8 /* ViewController.swift */; };
+		320676E827B6D9AA00543CAC /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320676DC27AFD6CC00543CAC /* EntryViewController.swift */; };
+		320676E927B6D9AB00543CAC /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320676DC27AFD6CC00543CAC /* EntryViewController.swift */; };
 		32393F76279456EC003FE3F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32393F75279456EC003FE3F8 /* AppDelegate.swift */; };
 		32393F78279456EC003FE3F8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32393F77279456EC003FE3F8 /* SceneDelegate.swift */; };
 		32393F7A279456EC003FE3F8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32393F79279456EC003FE3F8 /* ViewController.swift */; };
@@ -21,6 +25,22 @@
 		32393F97279456EC003FE3F8 /* Training_2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32393F96279456EC003FE3F8 /* Training_2UITests.swift */; };
 		32393F99279456EC003FE3F8 /* Training_2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32393F98279456EC003FE3F8 /* Training_2UITestsLaunchTests.swift */; };
 		32CE76B6279D627200DA5CE0 /* CommunicateWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CE76B5279D627200DA5CE0 /* CommunicateWeatherData.swift */; };
+		32E045B627B6E1A200F00AD9 /* CommunicateWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CE76B5279D627200DA5CE0 /* CommunicateWeatherData.swift */; };
+		32E045B727B6E1A200F00AD9 /* CommunicateWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CE76B5279D627200DA5CE0 /* CommunicateWeatherData.swift */; };
+		32E045B827B6E1C000F00AD9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32393F7B279456EC003FE3F8 /* Main.storyboard */; };
+		32E045B927B6E1C100F00AD9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32393F7B279456EC003FE3F8 /* Main.storyboard */; };
+		32E045BA27B6E1E900F00AD9 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320676E027B6CBFA00543CAC /* extensions.swift */; };
+		32E045BB27B6E1E900F00AD9 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320676E027B6CBFA00543CAC /* extensions.swift */; };
+		32E045BC27B6E1EE00F00AD9 /* DismissSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320676DE27B69EB200543CAC /* DismissSegue.swift */; };
+		32E045BD27B6E1EF00F00AD9 /* DismissSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320676DE27B69EB200543CAC /* DismissSegue.swift */; };
+		32E045BE27B6E1F200F00AD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32393F7E279456EC003FE3F8 /* Assets.xcassets */; };
+		32E045BF27B6E1F300F00AD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32393F7E279456EC003FE3F8 /* Assets.xcassets */; };
+		32E045C027B6E1F600F00AD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32393F80279456EC003FE3F8 /* LaunchScreen.storyboard */; };
+		32E045C127B6E1F700F00AD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32393F80279456EC003FE3F8 /* LaunchScreen.storyboard */; };
+		32E045C227B6E20600F00AD9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32393F77279456EC003FE3F8 /* SceneDelegate.swift */; };
+		32E045C327B6E20700F00AD9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32393F77279456EC003FE3F8 /* SceneDelegate.swift */; };
+		32E045C427B6E20B00F00AD9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32393F75279456EC003FE3F8 /* AppDelegate.swift */; };
+		32E045C527B6E20B00F00AD9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32393F75279456EC003FE3F8 /* AppDelegate.swift */; };
 		32F0846827963F3C00306968 /* YumemiWeather in Frameworks */ = {isa = PBXBuildFile; productRef = 32F0846727963F3C00306968 /* YumemiWeather */; };
 		33F1B5067E662FA1DD023927 /* Pods_Training_2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E206F78DBBC258A1CB36A902 /* Pods_Training_2.framework */; };
 		B2185AAFD69DB6434A171C42 /* Pods_Training_2_Training_2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D950887EB5C9593F33A984 /* Pods_Training_2_Training_2UITests.framework */; };
@@ -312,6 +332,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32E045C027B6E1F600F00AD9 /* LaunchScreen.storyboard in Resources */,
+				32E045BE27B6E1F200F00AD9 /* Assets.xcassets in Resources */,
+				32E045B827B6E1C000F00AD9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +342,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32E045C127B6E1F700F00AD9 /* LaunchScreen.storyboard in Resources */,
+				32E045BF27B6E1F300F00AD9 /* Assets.xcassets in Resources */,
+				32E045B927B6E1C100F00AD9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,7 +438,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32E045C427B6E20B00F00AD9 /* AppDelegate.swift in Sources */,
+				32E045BA27B6E1E900F00AD9 /* extensions.swift in Sources */,
+				32E045C227B6E20600F00AD9 /* SceneDelegate.swift in Sources */,
+				320676E627B6D9A000543CAC /* ViewController.swift in Sources */,
 				32393F8D279456EC003FE3F8 /* Training_2Tests.swift in Sources */,
+				32E045B627B6E1A200F00AD9 /* CommunicateWeatherData.swift in Sources */,
+				32E045BC27B6E1EE00F00AD9 /* DismissSegue.swift in Sources */,
+				320676E827B6D9AA00543CAC /* EntryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,8 +453,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				320676E727B6D9A000543CAC /* ViewController.swift in Sources */,
+				32E045B727B6E1A200F00AD9 /* CommunicateWeatherData.swift in Sources */,
+				32E045BD27B6E1EF00F00AD9 /* DismissSegue.swift in Sources */,
+				32E045C527B6E20B00F00AD9 /* AppDelegate.swift in Sources */,
+				320676E927B6D9AB00543CAC /* EntryViewController.swift in Sources */,
 				32393F97279456EC003FE3F8 /* Training_2UITests.swift in Sources */,
 				32393F99279456EC003FE3F8 /* Training_2UITestsLaunchTests.swift in Sources */,
+				32E045BB27B6E1E900F00AD9 /* extensions.swift in Sources */,
+				32E045C327B6E20700F00AD9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
