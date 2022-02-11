@@ -18,3 +18,7 @@ struct ResponseWeatherData: Codable {
     var min_temp: Int
     var date: String
 }
+
+protocol WeatherProtocol {
+    func fetchWeather(_ jsonString: String) throws -> String
+}

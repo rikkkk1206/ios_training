@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var maxTempLbl: UILabel!
     private var requestJsonData: String!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
+    let weatherDelegate = weatherClass()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -39,7 +40,7 @@ class ViewController: UIViewController {
         indicator.startAnimating()
         DispatchQueue.global(qos: .default).async {
             do {
-                try weather = YumemiWeather.syncFetchWeather(self.requestJsonData)
+                try weather = self.weatherDelegate.fetchWeather(self.requestJsonData)
                 
                 DispatchQueue.main.async {
                     self.weatherImage.isHidden = false
@@ -161,3 +162,10 @@ class ViewController: UIViewController {
     }
 }
 
+class weatherClass {}
+
+extension weatherClass: WeatherProtocol {
+    func fetchWeather(_ jsonString: String) throws -> String {
+        return try YumemiWeather.syncFetchWeather(jsonString)
+    }
+}
